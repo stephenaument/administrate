@@ -47,7 +47,7 @@ to display a collection of resources in an HTML table.
           <% end %>
         </th>
       <% end %>
-      <th colspan="2" scope="col"></th>
+      <th colspan="<%= collection_presenter.model_translates? ? 3 : 2 %>"></th>
     </tr>
   </thead>
 
@@ -67,6 +67,14 @@ to display a collection of resources in an HTML table.
             </a>
           </td>
         <% end %>
+
+        <%- if collection_presenter.model_translates? -%>
+        <td>
+          <%- (I18n.available_locales - [I18n.locale]).each do |other_locale| -%>
+          <%= link_to ":#{other_locale}", [namespace, resource, other_locale] %>
+          <%- end -%>
+        </td>
+        <%- end -%>
 
         <td><%= link_to(
           t("administrate.actions.edit"),
