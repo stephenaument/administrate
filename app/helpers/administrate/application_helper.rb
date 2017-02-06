@@ -41,6 +41,7 @@ module Administrate
 
     def clear_search_params
       params.except(:search, :page).permit(:order, :direction, :per_page)
+    end
 
     def default_locale?
       I18n.default_locale == I18n.locale
