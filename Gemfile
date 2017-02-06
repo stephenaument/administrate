@@ -37,6 +37,7 @@ group :test do
   gem "shoulda-matchers", "~> 2.8.0", require: false
   gem "timecop"
   gem "webmock"
+  gem "rails-controller-testing"
 end
 
 group :staging, :production do
